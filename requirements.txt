@@ -2,8 +2,8 @@
 flask
 gunicorn
 nltk
-spacy==3.7.2
+spacy>=3.2
 numpy
 tensorflow
 keras
-en_core_web_sm
+#en_core_web_sm

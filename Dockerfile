@@ -1,5 +1,11 @@
+# Use a specific TensorFlow version
+FROM tensorflow/tensorflow:2.x.x
+
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.10-slim
+#FROM python:3.10-slim
+
+# Set the working directory
+WORKDIR /app
 
 EXPOSE 5000
 
@@ -9,8 +15,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends nvidia-cuda-toolkit
 
+# Set environment variables
 ENV CUDA_VISIBLE_DEVICES=-1
 
 # Install pip requirements
@@ -22,8 +30,11 @@ RUN python -m pip install spacy>=3.2 && \
 # Download NLTK data separately
 RUN python -m nltk.downloader punkt
 
-WORKDIR /app
-COPY . /app
+# Copy the application code into the container
+COPY . .
+
+#WORKDIR /app
+#COPY . /app
 
 # Debugging: Display the content of the /app directory
 RUN ls -al /app

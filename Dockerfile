@@ -19,7 +19,7 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends nvidia-cuda-toolkit
 
 # Set environment variables
-ENV CUDA_VISIBLE_DEVICES=-1
+ENV CUDA_VISIBLE_DEVICES=0
 
 # Install pip requirements
 COPY requirements.txt .

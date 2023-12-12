@@ -39,7 +39,7 @@ jobs:
         context: .
         push: true
         image: docker.io/timane/imagechatbot:latest
-        username: ${{ secrets.DOCKUSERNAME }}
+        username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Execute Python scripts in Docker container

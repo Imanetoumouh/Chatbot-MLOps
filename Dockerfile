@@ -1,5 +1,5 @@
 # Use a specific TensorFlow version
-FROM tensorflow/tensorflow:2.x.x
+FROM tensorflow/tensorflow:latest
 
 # For more information, please refer to https://aka.ms/vscode-docker-python
 #FROM python:3.10-slim

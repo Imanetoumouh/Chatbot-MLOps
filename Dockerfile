@@ -28,7 +28,7 @@ RUN python -m pip install spacy>=3.2 && \
     python -m pip install -r requirements.txt
 
 # Download NLTK data separately
-RUN python -m nltk.downloader punkt
+#RUN python -m nltk.downloader punkt
 
 # Copy the application code into the container
 COPY . .

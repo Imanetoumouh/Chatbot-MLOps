@@ -9,6 +9,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+RUN apt-get update && apt-get install -y --no-install-recommends nvidia-cuda-toolkit
+
+ENV CUDA_VISIBLE_DEVICES=-1
+
 # Install pip requirements
 COPY requirements.txt .
 RUN python -m pip install spacy>=3.2 && \

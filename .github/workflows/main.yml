@@ -38,9 +38,9 @@ jobs:
       with:
         context: .
         push: true
-        image: docker.io/timane/imagechatbot:latest
+        image: docker.io/timane/imagechatbot:tagname
         username: ${{ secrets.DOCKUSERNAME }}
-        password: ${{ secrets.DOCKPASSWORD }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Execute Python scripts in Docker container
       run: docker run imagechatbot python /app/preprocess.py

@@ -19,6 +19,8 @@ RUN python -m pip install spacy>=3.2 && \
     python -m spacy download en_core_web_sm && \
     python -m pip install -r requirements.txt
 
+# Download NLTK data separately
+RUN python -m nltk.downloader punkt
 
 WORKDIR /app
 COPY . /app

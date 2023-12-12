@@ -6,4 +6,5 @@ spacy>=3.2
 numpy
 tensorflow
 keras
+tqdm
 #en_core_web_sm

@@ -5,8 +5,11 @@ WORKDIR /app
 COPY . /app
 #RUN pip install -r requirements.txt
 
+# Install spaCy and download language model
 RUN pip install spacy>=3.2 && \
-    pip install spacy download en_core_web_sm && \
-    pip install -r requirements.txt
+    python -m spacy download en_core_web_sm
+
+# Install other requirements
+RUN pip install -r requirements.txt
 
 CMD ["python3", "chatbot_flask.py"]

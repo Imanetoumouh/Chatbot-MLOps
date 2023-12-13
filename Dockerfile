@@ -19,6 +19,12 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 # Copy only the necessary data file (intents.json) into the container at /app
 COPY intents.json /app/intents.json
 
+# Set environment variable for NLTK data directory
+ENV NLTK_DATA=/home/appuser/nltk_data
+
+# Copy the punkt.zip file into the container
+COPY punkt.zip /home/appuser/nltk_data/tokenizers/punkt.zip
+
 # Run data preprocessing
 RUN python /app/preprocess_data.py
 

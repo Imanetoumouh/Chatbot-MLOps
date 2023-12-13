@@ -12,6 +12,6 @@ RUN pip install spacy>=3.2 && \
 # Install other requirements
 RUN pip install -r requirements.txt
 
-EXPOSE 80
+EXPOSE 5000
 
 CMD ["python3", "chatbot_flask.py"]

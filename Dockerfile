@@ -18,7 +18,8 @@ RUN python -m pip install spacy>=3.2 && \
 
 # Install any needed packages specified in requirements.txt
 #RUN pip install --no-cache-dir -r /app/requirements.txt
-RUN python -m pip install --no-cache-dir -r /app/requirements.txt
+#RUN python -m pip install --no-cache-dir -r /app/requirements.txt
+RUN python -m pip install -r /app/requirements.txt
 
 
 # Copy only the necessary data file (intents.json) into the container at /app

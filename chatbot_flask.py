@@ -65,6 +65,6 @@ if __name__ == "__main__":
     model, words, classes = load_chatbot_model('chatbot_model.h5', 'words.pkl', 'classes.pkl')
     intents_json = json.loads(open('intents.json').read())
     lemmatizer = WordNetLemmatizer()
-    app.run(host='0.0.0.0', port=1072, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
     #app.run(debug=True, port=5000)
     

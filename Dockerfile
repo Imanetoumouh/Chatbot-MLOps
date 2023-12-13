@@ -4,6 +4,9 @@ FROM tensorflow/tensorflow:latest
 # For more information, please refer to https://aka.ms/vscode-docker-python
 #FROM python:3.10-slim
 
+# Set the working directory
+WORKDIR /app
+## Copy files
 COPY preprocess_data.py /app/
 COPY train_chatbot_model.py /app/
 COPY chatbot_flask.py /app/
@@ -20,10 +23,10 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY intents.json /app/intents.json
 
 # Set environment variable for NLTK data directory
-ENV NLTK_DATA=/home/appuser/nltk_data
+#ENV NLTK_DATA=/home/appuser/nltk_data
 
 # Copy the punkt.zip file into the container
-COPY punkt.zip /home/appuser/nltk_data/tokenizers/punkt.zip
+#COPY punkt.zip /home/appuser/nltk_data/tokenizers/punkt.zip
 
 # Run data preprocessing
 RUN python /app/preprocess_data.py
@@ -72,12 +75,15 @@ EXPOSE 5000
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
-#RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-#USER appuser
+RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 #CMD ["gunicorn", "--bind", "0.0.0.0:5000", "chatbot_flask:app"]
 #CMD ["--bind", "0.0.0.0:5000", "chatbot_flask:app"]
 
 # Command to run the Flask app using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--log-level", "debug", "chatbot_flask:app"]
+#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--log-level", "debug", "chatbot_flask:app"]
+
+# Command to run your application
+CMD ["python", "chatbot_flask.py"]
